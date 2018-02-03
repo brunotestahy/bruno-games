@@ -31853,7 +31853,7 @@ export class GameService {
     "total_items": 7
   };
 
-  private allCategories: GameCategory = [];
+  private allCategories: GameCategory[] = [];
 
   private readonly baseURL = 'https://staging-frontapi.cherrytech.com/';
   private readonly credentials = '?brand:cherrycasino.desktop&locale=en';
