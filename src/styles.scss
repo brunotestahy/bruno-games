@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*Bootstrap*/
+@import "~bootstrap/scss/bootstrap.scss";
+
+/*Fonts*/
+@import "assets/fonts/orbitron/orbitron";
+
+/*Custom imports*/
+@import "assets/css/variables";

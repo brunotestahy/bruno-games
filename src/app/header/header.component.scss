@@ -1,0 +1,28 @@
+@import "../../assets/css/variables";
+
+.header {
+  min-height: 60px;
+  background: $primary-color;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-left: -1.5rem;
+
+    img {
+      width: 80%;
+      margin: -2rem 0;
+      cursor: pointer;
+      outline: transparent;
+    }
+  }
+
+  #dropdownBasic1 {
+    font-family: 'orbitron-regular';
+    text-transform: uppercase;
+  }
+}

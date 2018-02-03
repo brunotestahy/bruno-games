@@ -1,0 +1,13 @@
+<div class="header">
+  <div class="logo">
+    <img src="/assets/img/logo.png"
+         alt="Bruno-Games-Logo"
+         [routerLink]="['/']">
+  </div>
+  <div ngbDropdown placement="bottom-right" class="d-inline-block">
+    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Games</button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <button class="dropdown-item" *ngFor="let category of gameCategories">{{category.name}}</button>
+    </div>
+  </div>
+</div>
