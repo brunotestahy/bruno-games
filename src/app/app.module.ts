@@ -13,6 +13,8 @@ import {GameService} from './games/game.service';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {FilterPipe} from './shared/pipes/filter.pipe';
+import {StarComponent} from './stars/star.component';
+import {StarsComponent} from './stars/stars.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import {FilterPipe} from './shared/pipes/filter.pipe';
     HeaderComponent,
     GamesListComponent,
     GameComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    StarComponent,
+    StarsComponent
   ],
   imports: [
     AppRoutingModule,
