@@ -16,6 +16,7 @@ import {FilterPipe} from './shared/pipes/filter.pipe';
 import {StarComponent} from './stars/star.component';
 import {StarsComponent} from './stars/stars.component';
 import {CacheService} from './shared/services/cache.service';
+import { GameDetailComponent } from './games/game-detail/game-detail.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {CacheService} from './shared/services/cache.service';
     GameComponent,
     SearchBarComponent,
     StarComponent,
-    StarsComponent
+    StarsComponent,
+    GameDetailComponent
   ],
   imports: [
     AppRoutingModule,

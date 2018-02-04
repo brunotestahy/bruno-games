@@ -1,4 +1,4 @@
-import {GameCategory} from '../game-category';
+import {GameCategory} from './game-category';
 
 export interface GameCategoriesApi {
   _embedded: {

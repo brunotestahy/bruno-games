@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
-import {GameCategoriesApi} from '../models/API/game-categories-api';
+import {GameCategoriesApi} from '../models/game-categories';
+import {GameCategory} from '../models/game-category';
 
 @Injectable()
 export class GameService {
@@ -17,9 +18,14 @@ export class GameService {
     return this._http.get<any>(this.baseURL + append);
   }
 
-  getCategories(category = ''): Observable<GameCategoriesApi> {
+  getAllCategories(): Observable<GameCategoriesApi> {
+    const append = 'game-categories';
+    return this._http.get<GameCategoriesApi>(this.baseURL + append + this.credentials);
+  }
+
+  getGamesByCategory(category = 'popular-games'): Observable<GameCategory> {
     const append = 'game-categories';
     category = category ? '/' + category : category;
-    return this._http.get<GameCategoriesApi>(this.baseURL + append + category + this.credentials);
+    return this._http.get<GameCategory>(this.baseURL + append + category + this.credentials);
   }
 }

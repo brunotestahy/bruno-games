@@ -1,0 +1,9 @@
+@import "variables";
+
+@mixin font-definition($family: 'orbitron-regular', $size: 18px, $color: $primary-color, $transform: unset, $weight: normal) {
+  font-family: $family;
+  font-size: $size;
+  color: $color;
+  text-transform: $transform;
+  font-weight: $weight;
+}

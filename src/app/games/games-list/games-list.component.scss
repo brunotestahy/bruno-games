@@ -1,0 +1,12 @@
+@import "../../../assets/css/mixins";
+@import "../../../assets/css/variables";
+
+.game-list-container {
+  padding: 0 1rem;
+}
+
+.game-category-name {
+  margin: 2rem 0;
+  text-align: center;
+  @include font-definition('orbitron-black', 25px, $gray-color, uppercase, bold);
+}

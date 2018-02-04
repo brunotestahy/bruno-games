@@ -22,8 +22,12 @@
     }
   }
 
-  #dropdownBasic1 {
+  #dropdown-header {
     font-family: 'orbitron-regular';
     text-transform: uppercase;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
 }

@@ -1,10 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-
 /*Bootstrap*/
 @import "~bootstrap/scss/bootstrap.scss";
-
 /*Fonts*/
 @import "assets/fonts/orbitron/orbitron";
-
 /*Custom imports*/
 @import "assets/css/variables";
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(/assets/img/pattern-vignette.png), url(/assets/img/pattern-repeater.png);
+  background-size: 100% 100%, auto;
+}
