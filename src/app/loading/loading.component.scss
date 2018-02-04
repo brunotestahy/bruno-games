@@ -1,0 +1,12 @@
+@import "../../assets/css/variables";
+
+/deep/ .loader .main-loading{
+  background-color: $gray-color;
+}
+
+.loading-container{
+  margin-top: 5rem;
+  padding: 35px;
+  display: flex;
+  justify-content: center;
+}

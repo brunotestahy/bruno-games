@@ -17,6 +17,9 @@ import {StarComponent} from './stars/star.component';
 import {StarsComponent} from './stars/stars.component';
 import {CacheService} from './shared/services/cache.service';
 import { GameDetailComponent } from './games/game-detail/game-detail.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {LoadersCssModule} from 'angular2-loaders-css';
+import { LoadingComponent } from './loading/loading.component';
 
 
 @NgModule({
@@ -29,13 +32,16 @@ import { GameDetailComponent } from './games/game-detail/game-detail.component';
     SearchBarComponent,
     StarComponent,
     StarsComponent,
-    GameDetailComponent
+    GameDetailComponent,
+    LoadingComponent
   ],
   imports: [
     AppRoutingModule,
+    BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    LoadersCssModule,
     NgbModule.forRoot()
   ],
   providers: [

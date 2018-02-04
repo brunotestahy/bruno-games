@@ -21,8 +21,8 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._router.navigate(['games', 'popular-games']);
     if (!this.gameCategories) {
+      this._router.navigate(['games', 'popular-games']);
       this.loadCategories();
     }
   }
@@ -38,6 +38,9 @@ export class HeaderComponent implements OnInit {
   }
 
   goToGameCategory(category: string) {
-    this._router.navigate(['games', category]);
+    this._router.navigate(['games', category])
+      .then(() => {
+        this._gameService.emitGameCategoryChange();
+      });
   }
 }

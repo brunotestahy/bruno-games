@@ -12,7 +12,7 @@ const routes: Routes = [
     path: 'game/:id', component: GameDetailComponent
   },
   {
-    path: '**', redirectTo: 'games'
+    path: '**', redirectTo: 'games/popular-games'
   }
 ];
 

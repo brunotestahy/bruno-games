@@ -1,6 +1,11 @@
 @import "../../../assets/css/mixins";
 @import "../../../assets/css/variables";
 
+/*Enable this for fade animation works*/
+:host {
+  display: block;
+}
+
 .game-list-container {
   padding: 0 1rem;
 }
@@ -9,4 +14,13 @@
   margin: 2rem 0;
   text-align: center;
   @include font-definition('orbitron-black', 25px, $gray-color, uppercase, bold);
+}
+
+.cards-fix {
+  min-width: 18rem;
+  margin: 1rem;
+}
+
+.load-more {
+  padding: 0 0 2rem 0;
 }

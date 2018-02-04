@@ -1,0 +1,42 @@
+.card {
+  min-height: 10rem;
+  min-width: 18rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  padding: .5rem 1rem;
+  border-radius: .3rem;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.75);
+  background-color: #f7f7f7;
+  color: #63CBCF;
+
+  &:hover {
+    box-shadow: 0 0 12px 7px rgba(255, 132, 47, 0.75);
+  }
+
+  .image {
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: .2rem;
+      cursor: pointer;
+    }
+  }
+
+  .title {
+    margin: .5rem 0;
+    color: #FF8826;
+    font-size: .9rem;
+    font-weight: bold;
+  }
+
+  .description {
+    margin: .5rem 0;
+    text-align: justify;
+    line-height: 1.2rem;
+    max-height: 3rem;
+    overflow: hidden;
+  }
+}

@@ -2,7 +2,7 @@
   <div class="logo">
     <img src="/assets/img/logo.png"
          alt="Bruno-Games-Logo"
-         [routerLink]="['/']">
+         (click)="goToGameCategory('popular-games')">
   </div>
   <div ngbDropdown placement="bottom-right" class="d-inline-block">
     <button class="btn btn-outline-primary"
