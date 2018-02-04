@@ -2,7 +2,7 @@ export interface Game {
   background?: string;
   backgrounds?: string[];
   cols?: number;
-  createdAt?: {
+  created_at?: {
     date?: string;
     timezone?: string;
     timezone_type?: number;
