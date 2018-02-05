@@ -1,3 +1,6 @@
+@import "../../../assets/css/variables";
+@import "../../../assets/css/mixins";
+
 .card {
   min-height: 10rem;
   min-width: 18rem;
@@ -8,12 +11,11 @@
   margin: 1rem;
   padding: .5rem 1rem;
   border-radius: .3rem;
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.75);
-  background-color: #f7f7f7;
-  color: #63CBCF;
+  box-shadow: 0 0 12px 0 $black-box-shadow;
+  background-color: $white-smooth-color;
 
   &:hover {
-    box-shadow: 0 0 12px 7px rgba(255, 132, 47, 0.75);
+    box-shadow: 0 0 12px 7px $gray-color;
   }
 
   .image {
@@ -27,16 +29,17 @@
 
   .title {
     margin: .5rem 0;
-    color: #FF8826;
-    font-size: .9rem;
-    font-weight: bold;
+    @include font-definition('orbitron-black', 18px, $gray-color, capitalize, bold);
   }
 
-  .description {
-    margin: .5rem 0;
-    text-align: justify;
-    line-height: 1.2rem;
-    max-height: 3rem;
-    overflow: hidden;
+  .vendor {
+    @include font-definition('orbitron-regular', 16px, $blue-smooth-color, normal, normal);
+  }
+}
+
+/*Mobile style*/
+@media screen and (max-width: 758px) {
+  .card {
+    margin: 1rem 0;
   }
 }

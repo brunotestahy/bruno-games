@@ -40,7 +40,7 @@ export interface Game {
     '600x280'?: string;
     legacy?: string;
   };
-  url?: any;
+  url?: string;
   vendor?: string;
   vendor_properties?: {
     csid?: number;

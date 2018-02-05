@@ -6,6 +6,7 @@ import {GameService} from '../../shared/services/game.service';
 import {fadeAnimationTrigger} from '../../shared/animations/fade-animation';
 import {Subscription} from 'rxjs/Subscription';
 import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/debounceTime';
 
 @Component({
   selector: 'app-games-list',
@@ -23,9 +24,12 @@ export class GamesListComponent implements OnInit, OnDestroy {
     this._cacheService.getCachedValue('game-category') : null;
 
   onGameCategoryChangeSubscription: Subscription;
+  onSearchValueChangeSubscription: Subscription;
 
   isLoading = true;
-  maxLoadedGames = 12;
+  maxLoadedGames = this._cacheService.getCachedValue('load-more-state') || 12;
+
+  searchBarValueHandler = this._cacheService.getCachedValue('filtered-value') || '';
 
   constructor(private _activatedRoute: ActivatedRoute,
               private _cacheService: CacheService,
@@ -43,22 +47,33 @@ export class GamesListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.unloadGeneralListeners();
+
+    this.saveLoadMoreState();
   }
 
   loadGeneralListeners() {
     this.onGameCategoryChangeSubscription = this._gameService.handleGameCategoryChange$
       .subscribe(() => {
         console.log('emit');
+        this.maxLoadedGames = 12;
         this.getCategoryFromRoute();
+      });
+
+    this.onSearchValueChangeSubscription = this._gameService.handleSearchBarValueChange$.debounceTime(500)
+      .subscribe((value: string) => {
+        this.searchBarValueHandler = value;
+        this._cacheService.setCachedValue('filtered-value', this.searchBarValueHandler);
       });
   }
 
   unloadGeneralListeners() {
     this.onGameCategoryChangeSubscription.unsubscribe();
+    this.onSearchValueChangeSubscription.unsubscribe();
   }
 
   getCategoryFromRoute() {
     this.isLoading = true;
+    this.maxLoadedGames = 12;
     this._activatedRoute.params
       .take(1)
       .subscribe((params) => {
@@ -81,5 +96,9 @@ export class GamesListComponent implements OnInit, OnDestroy {
     if (this.maxLoadedGames < this.gameCategory._embedded.games.length) {
       this.maxLoadedGames = this.maxLoadedGames + 12;
     }
+  }
+
+  saveLoadMoreState() {
+    this._cacheService.setCachedValue('load-more-state', this.maxLoadedGames);
   }
 }

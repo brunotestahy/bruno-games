@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {GameService} from '../shared/services/game.service';
+import {CacheService} from '../shared/services/cache.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 
-  constructor() { }
+  searchValue: string = this._cacheService.getCachedValue('filtered-value') || '';
+
+  constructor(private _gameService: GameService,
+              private _cacheService: CacheService) { }
 
   ngOnInit() {
   }
 
+  onSearchValueChange(value: string) {
+    this._gameService.emitSearchBarValueChange(value);
+  }
 }

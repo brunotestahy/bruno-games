@@ -18,9 +18,23 @@
 
 .cards-fix {
   min-width: 18rem;
+  max-width: 18rem;
   margin: 1rem;
 }
 
 .load-more {
+  display: flex;
+  justify-content: center;
   padding: 0 0 2rem 0;
+
+  button {
+    @include font-definition('orbitron-regular', 16px, $white-smooth-color, uppercase, normal);
+  }
+}
+
+/*Mobile style*/
+@media screen and (max-width: 758px) {
+  .load-more {
+    margin-top: -4rem;
+  }
 }

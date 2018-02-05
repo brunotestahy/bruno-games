@@ -4,12 +4,16 @@ import {HttpClient} from '@angular/common/http';
 import {GameCategoriesApi} from '../models/game-categories';
 import {GameCategory} from '../models/game-category';
 import {Subject} from 'rxjs/Subject';
+import {Game} from '../models/game';
 
 @Injectable()
 export class GameService {
 
   private onGameCategoryChange: Subject<any> = new Subject();
   handleGameCategoryChange$ = this.onGameCategoryChange.asObservable();
+
+  private onSearchBarValueChange: Subject<string> = new Subject();
+  handleSearchBarValueChange$ = this.onSearchBarValueChange.asObservable();
 
   private readonly baseURL = 'https://staging-frontapi.cherrytech.com/';
   private readonly credentials = '?brand=cherrycasino.desktop&locale=en';
@@ -21,9 +25,14 @@ export class GameService {
     this.onGameCategoryChange.next();
   }
 
-  getGames(): Observable<any> {
+  emitSearchBarValueChange(value: string) {
+    this.onSearchBarValueChange.next(value);
+  }
+
+  getGameById(id: string): Observable<Game> {
     const append = 'games';
-    return this._http.get<any>(this.baseURL + append);
+    id = id ? '/' + id : id;
+    return this._http.get<Game>(this.baseURL + append + id + this.credentials);
   }
 
   getAllCategories(): Observable<GameCategoriesApi> {

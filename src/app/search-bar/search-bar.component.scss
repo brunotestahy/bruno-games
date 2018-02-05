@@ -1,12 +1,14 @@
+@import "../../assets/css/variables";
+
 .search-container {
-  background: #f7f7f7;
+  background: $white-smooth-color;
   min-height: 5rem;
   border-radius: .3rem;
   display: flex;
   padding: 0 3rem;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 12px 0 $black-box-shadow;
 
   .search-input {
     width: 100%;
@@ -18,7 +20,7 @@
       left: 10px;
 
       i {
-        color: #008797;
+        color: $gray-color;
       }
     }
 
@@ -39,8 +41,6 @@
     padding: 0 1rem;
 
     .search-input {
-      margin-right: 1rem;
-
       input {
         padding-right: 10px;
       }

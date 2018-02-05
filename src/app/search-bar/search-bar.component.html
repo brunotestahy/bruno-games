@@ -6,7 +6,8 @@
     </label>
     <input id="search-title-input"
            type="text"
-           [(ngModel)]="titleSearch"
+           [(ngModel)]="searchValue"
+           (ngModelChange)="onSearchValueChange($event)"
            placeholder="Filter the games by title"/>
   </div>
 </div>
