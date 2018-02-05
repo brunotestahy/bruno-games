@@ -28,10 +28,10 @@ export class GameDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getCategoryFromRoute();
+    this.getGameFromRoute();
   }
 
-  getCategoryFromRoute() {
+  getGameFromRoute() {
     this.isLoading = true;
     this._activatedRoute.params
     // Avoid duplicated events

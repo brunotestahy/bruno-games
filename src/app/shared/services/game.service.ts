@@ -15,8 +15,8 @@ export class GameService {
   private onSearchBarValueChange: Subject<string> = new Subject();
   handleSearchBarValueChange$ = this.onSearchBarValueChange.asObservable();
 
-  private readonly baseURL = 'https://staging-frontapi.cherrytech.com/';
-  private readonly credentials = '?brand=cherrycasino.desktop&locale=en';
+  readonly baseURL = 'https://staging-frontapi.cherrytech.com/';
+  readonly credentials = '?brand=cherrycasino.desktop&locale=en';
 
   constructor(private _http: HttpClient) {
   }
