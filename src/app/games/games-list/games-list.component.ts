@@ -17,7 +17,7 @@ import 'rxjs/add/operator/debounceTime';
   ]
 })
 export class GamesListComponent implements OnInit, OnDestroy {
-// Enable Animation Trigger
+  // Enable Animation Trigger
   @HostBinding('@fadeAnimation') fadeAnimationActive = true;
 
   gameCategory: GameCategory = this._cacheService.getCachedValue('game-category') ?
@@ -26,9 +26,12 @@ export class GamesListComponent implements OnInit, OnDestroy {
   onGameCategoryChangeSubscription: Subscription;
   onSearchValueChangeSubscription: Subscription;
 
+  // Loading state control
   isLoading = true;
+  // Max loaded games control
   maxLoadedGames = this._cacheService.getCachedValue('load-more-state') || 12;
 
+  // Filtered value on search bar
   searchBarValueHandler = this._cacheService.getCachedValue('filtered-value') || '';
 
   constructor(private _activatedRoute: ActivatedRoute,
@@ -51,6 +54,7 @@ export class GamesListComponent implements OnInit, OnDestroy {
     this.saveLoadMoreState();
   }
 
+  // General listeners to operate async events
   loadGeneralListeners() {
     this.onGameCategoryChangeSubscription = this._gameService.handleGameCategoryChange$
       .subscribe(() => {
@@ -66,22 +70,27 @@ export class GamesListComponent implements OnInit, OnDestroy {
       });
   }
 
+  // Destroy the listeners
   unloadGeneralListeners() {
     this.onGameCategoryChangeSubscription.unsubscribe();
     this.onSearchValueChangeSubscription.unsubscribe();
   }
 
   getCategoryFromRoute() {
+    // Reset the initial state for the controls
     this.isLoading = true;
     this.maxLoadedGames = 12;
+
+    // Get param on url
     this._activatedRoute.params
+      // Avoid duplicated events
       .take(1)
       .subscribe((params) => {
         const category = params['category'];
         this._gameService.getGamesByCategory(category)
           .subscribe((response: GameCategory) => {
               this.gameCategory = response;
-              console.log(this.gameCategory);
+              // Saving the response on the cache service
               this._cacheService.setCachedValue('game-category', this.gameCategory);
               this.isLoading = false;
             },
@@ -92,6 +101,7 @@ export class GamesListComponent implements OnInit, OnDestroy {
       });
   }
 
+  // Increment 12 by 12 new games on list to avoid slow loading
   loadMoreGames() {
     if (this.maxLoadedGames < this.gameCategory._embedded.games.length) {
       this.maxLoadedGames = this.maxLoadedGames + 12;

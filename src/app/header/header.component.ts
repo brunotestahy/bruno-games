@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    // Load the categories only in the first time
     if (!this.gameCategories) {
       this._router.navigate(['games', 'popular-games']);
       this.loadCategories();
@@ -30,13 +31,14 @@ export class HeaderComponent implements OnInit {
   loadCategories() {
     this._gameService.getAllCategories()
       .subscribe((response: GameCategoriesApi) => {
-          console.log(response);
           this.gameCategories = response._embedded.game_categories;
+          // Save on the cache service
           this._cacheService.setCachedValue('game-categories', this.gameCategories);
         },
         error => console.error(error));
   }
 
+  // Change the category and reload the game's list
   goToGameCategory(category: string) {
     this._router.navigate(['games', category])
       .then(() => {

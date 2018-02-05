@@ -2,13 +2,10 @@ import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core
 
 import { StarsComponent } from './stars.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { Http, RequestOptions } from '@angular/http';
-import { MockBackend } from '@angular/http/testing';
 
-fdescribe('StarsComponent', () => {
+describe('StarsComponent', () => {
    let component: StarsComponent;
    let fixture: ComponentFixture<StarsComponent>;
-   const _http: Http = new Http(new MockBackend(), new RequestOptions);
 
    beforeEach(async(() => {
       TestBed.configureTestingModule({

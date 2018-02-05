@@ -17,7 +17,9 @@ export class GameDetailComponent implements OnInit {
   // Enable Animation Trigger
   @HostBinding('@fadeAnimation') fadeAnimationActive = true;
 
+  // Loading control
   isLoading = true;
+
   selectedGame: Game;
 
   constructor(private _activatedRoute: ActivatedRoute,
@@ -32,15 +34,16 @@ export class GameDetailComponent implements OnInit {
   getCategoryFromRoute() {
     this.isLoading = true;
     this._activatedRoute.params
+    // Avoid duplicated events
       .take(1)
       .subscribe((params) => {
         const id = params['id'];
         this.selectedGame = this._cacheService.getCachedValue('selected-game');
+        // Reload the call only if the selected game is different from te saved previously
         if (!this.selectedGame || this.selectedGame.id !== id) {
           this._gameService.getGameById(id)
             .subscribe((response: Game) => {
                 this.selectedGame = response;
-                console.log(this.selectedGame);
                 this._cacheService.setCachedValue('selected-game', this.selectedGame);
                 this.isLoading = false;
               },
@@ -54,6 +57,7 @@ export class GameDetailComponent implements OnInit {
       });
   }
 
+  // Back button function
   backToPreviousPage() {
     window.history.back();
   }

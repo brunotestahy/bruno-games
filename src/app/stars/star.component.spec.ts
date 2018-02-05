@@ -2,7 +2,7 @@ import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core
 
 import { StarComponent } from './star.component';
 
-fdescribe('StarComponent', () => {
+describe('StarComponent', () => {
    let component: StarComponent;
    let fixture: ComponentFixture<StarComponent>;
 

@@ -17,6 +17,7 @@ export class SearchBarComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Emit a new event whenever a different value is typed
   onSearchValueChange(value: string) {
     this._gameService.emitSearchBarValueChange(value);
   }
